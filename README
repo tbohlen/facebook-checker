@@ -1,0 +1,3 @@
+This script takes a file name as argument, reads in a list of facebook access tokens and then prints out the number of unique people who's accounts allow access by this server.
+
+This was built to help score a coding challenge at Factory 0.
