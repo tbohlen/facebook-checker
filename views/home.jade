@@ -2,16 +2,16 @@
 html
     head
         script
-            window.fbLogin = function() {
+            fbLogin = function() {
                 FB.login(window.loginCallback, {scope:"email"});
             }
 
-            window.loginCallback = function(response) {
+            loginCallback = function(response) {
                 if (response.authResponse) {
-                    console.log("Success");
-                window.token = response.session.accessToken;
+                    console.log(JSON.stringify(response));
+                    window.token = response.accessToken;
                 }
             }
     body
         include indexTop
-        button(onclick="window.fbLogin();") Login With Facebook
+        button(onclick="fbLogin();") Login With Facebook
