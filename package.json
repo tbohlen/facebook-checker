@@ -1,0 +1,9 @@
+{
+    "name" : "facebook-checker",
+    "version": "1.0.0",
+    "dependencies": {
+        "commander": "0.5.x"
+        , "restler": "2.x.x"
+    }
+}
+
