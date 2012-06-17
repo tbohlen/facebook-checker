@@ -10,8 +10,6 @@ program
     .parse(process.argv);
 
 var validUserIDs = [];
-var expectedTests = 0;
-var tests = 0;
 
 /*
  * Function: recieveInfo
@@ -26,12 +24,7 @@ recieveInfo = function(data) {
     }
     else {
         validUserIDs.push(id);
-        if (tests == expectedTests) {
-            console.log("There were " + tests.toString() + " valid access tokens.")
-        }
-        else {
-            tests++;
-        }
+        console.log("There are " + validUserIDs.length.toString() + " valid access tokens.")
     }
 }
 
@@ -47,7 +40,6 @@ fs.readFile(program.args[0], function(err, data) {
             restler.get("https://graph.facebook.com/me/permissions?access_token=" + token.toString()).on('complete', function(answer) {
 
                 var jsonAnswer = JSON.parse(answer);
-                console.log(answer);
                 if ("error" in jsonAnswer) {
                     console.log("Error: " + answer);
                 }
