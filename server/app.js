@@ -1,4 +1,7 @@
+var express = require("express");
+var jade = require("jade");
 var app = express.createServer();
+
 
 app.configure(function(){
   app.set("views", __dirname + "/../views");
@@ -9,7 +12,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.compiler({ src: __dirname + '/../public', enable: ['less'] }));
   app.use(app.router);
-  app.use(express.staticProvider(__dirname + '/../public', {maxAge: 31557600000}));
+  app.use(express.static(__dirname + '/../public', {maxAge: 31557600000}));
 });
 
 app.configure('development', function(){
@@ -27,3 +30,5 @@ app.configure('production', function(){
 app.get('^/?$', function(req, res, next){
     res.render("home.jade", {layout: false});
 });
+
+app.listen(8080);

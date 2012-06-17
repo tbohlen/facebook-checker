@@ -4,6 +4,8 @@
     "dependencies": {
         "commander": "0.5.x"
         , "restler": "2.x.x"
+	, "express": "2.x.x"
+	, "jade": "x.x.x"
     }
 }
 
