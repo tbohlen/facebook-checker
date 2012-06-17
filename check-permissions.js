@@ -20,12 +20,12 @@ recieveInfo = function(data) {
     var jsonData = JSON.stringify(data);
     var id = jsonData.id;
     if (id in validUserIDs) {
-        process.stdout.write("REPEAT USER");
+        console.log("REPEAT USER");
     }
     else {
         validUserIDs.push(id);
         if (tests == expectedTests) {
-            process.stdout.write("There were " + tests.toString() + " valid access tokens.")
+            console.log("There were " + tests.toString() + " valid access tokens.")
         }
         else {
             tests++;
@@ -41,7 +41,7 @@ recieveInfo = function(data) {
 recievePermissions = function(result) {
     var jsonAnswer = JSON.stringify(answer);
     if (jsonAnswer.error) {
-        process.stdout.write("Error: " + JSON.stringify(jsonAnswer));
+        console.log("Error: " + JSON.stringify(jsonAnswer));
     }
     else {
         restler.get("https://graph.facebook.com/me?access_token=" + JSON.stringify(token), recieveInfo);
@@ -50,10 +50,10 @@ recievePermissions = function(result) {
 
 fs.readFile(program.args[0], function(err, data) {
     if(err) {
-        process.stdout.write("There was an error when reading the file. Did you misspell the name?");
+        console.log("There was an error when reading the file. Did you misspell the name?");
     }
     else {
-        var tokens = data.split('\n');
+        var tokens = data.toString().split('\n');
         expectedTests = tokens.length;
         for(var i = 0; i < tokens.length; i++) {
             var token = tokens[i];
